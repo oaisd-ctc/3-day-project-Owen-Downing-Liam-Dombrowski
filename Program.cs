@@ -2,7 +2,7 @@
 
 public class Program
 {
-    public internal void Main(string[] args)
+    public static void Main(string[] args)
     {
         Console.WriteLine("Hello gamblers!");
     }
