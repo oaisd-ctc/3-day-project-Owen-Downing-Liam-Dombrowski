@@ -1,1 +1,9 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Cards;
+
+public class Program
+{
+    public internal void Main(string[] args)
+    {
+        Console.WriteLine("Hello gamblers!");
+    }
+}
