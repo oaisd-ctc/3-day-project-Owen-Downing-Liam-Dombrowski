@@ -5,6 +5,13 @@ namespace Cards
         protected int cardValue;
         protected string cardName;
 
-        public 
-    }
+        public int CardValue
+        {
+            get { return cardValue; }
+        }
+
+        public string CardName
+        {
+            get { return cardName; }
+        }
 }
