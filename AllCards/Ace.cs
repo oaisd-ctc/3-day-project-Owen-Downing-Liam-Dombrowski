@@ -2,10 +2,11 @@ namespace Cards
 {
     public class Ace : Card
     {
-        cardValue = 11;
-        cardName = "Ace";
+        public readonly int cardValue = 11;
+        public readonly string cardName = "Ace";
 
-        public int CardValue
+        //NOT NECESSSARY DUE TO READONLY PROTECTION
+        /*public int CardValue
         {
             get { return cardValue; }
         }
@@ -13,6 +14,11 @@ namespace Cards
         public string CardName
         {
             get { return cardName; }
+        }*/
+
+        public override void DrawCardFromDeck()
+        {
+            Console.WriteLine($"You drew a {cardName}!");
         }
     }
 }
