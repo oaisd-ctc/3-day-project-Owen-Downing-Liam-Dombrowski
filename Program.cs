@@ -42,7 +42,7 @@ public class Program
 
 		object playerCard1 = DrawCard();
 		object playerCard2 = DrawCard();
-		Console.WriteLine($"You drew a {playerCard1.cardName} and a {playerCard2.cardName}.")
+		Console.WriteLine($"You drew a {playerCard1.cardName} and a {playerCard2.cardName}.");
 		int handValue = playerCard1.cardValue + playerCard2.cardValue;
 
 		PlayerTurn();
@@ -62,14 +62,14 @@ public class Program
 		}
 		else 
 		{
-			Console.WriteLine($"Your hand value is {handValue}. Would you like to hit or stand? (H / S)")
+			Console.WriteLine($"Your hand value is {handValue}. Would you like to hit or stand? (H / S)");
 			if (Console.ReadLine() = "H" || Console.ReadLine() = "Hit")
 			{
 				PlayerHit();
 			}
 			else if (Console.ReadLine() = "S" || Console.ReadLine() = "Stand")
 			{
-				Console.WriteLine($"Your final hand value is {handValue}.")
+				Console.WriteLine($"Your final hand value is {handValue}.");
 				DealerTurn();
 			}
 		}
