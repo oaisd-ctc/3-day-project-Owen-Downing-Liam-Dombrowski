@@ -2,8 +2,8 @@ namespace Cards
 {
     public class Ace : Card
     {
-        protected int cardValue;
-        protected string cardName;
+        protected int cardValue = 11;
+        protected string cardName = "Ace";
 
         public int CardValue
         {
