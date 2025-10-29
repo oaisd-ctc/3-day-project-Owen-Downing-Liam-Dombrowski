@@ -1,4 +1,5 @@
-﻿using Cards;
+﻿using System.Security.AccessControl;
+using Cards;
 
 public class Program
 {
@@ -6,6 +7,23 @@ public class Program
     {
         Console.WriteLine("Hello gamblers!");
     }
+
+	//Initialize the card objects
+	Ace ace = new Ace();
+	Two two = new Two();
+	Three three = new Three();
+	Four four = new Four();
+	Five five = new Five();
+	Six six = new Six();
+	Seven seven = new Seven();
+	Eight eight = new Eight();
+	Nine nine = new Nine();
+	Ten ten = new Ten();
+	Jack jack = new Jack();
+	Queen queen = new Queen();
+	King king = new King();
+	//Create baseline array
+	public readonly Array baselineDeck = new { ace, two, three, four, five, six, seven, eight, nine, ten, jack, queen, king };
 
 	public object DrawCard()
 	{
