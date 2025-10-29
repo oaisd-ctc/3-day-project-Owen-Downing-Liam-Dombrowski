@@ -20,15 +20,14 @@ public class Program
 	{
 		object dealerCard = DrawCard();
 		object dealerHiddenCard = DrawCard();
-		Console.WriteLine($"The dealer drew a {dealerCard.GetName()} and a hidden card.");
+		Console.WriteLine($"The dealer drew a {dealerCard.cardName} and a hidden card.");
 
 		object playerCard1 = DrawCard();
 		object playerCard2 = DrawCard();
-		Console.WriteLine($"You drew a {playerCard1.GetName()} and a {playerCard2.GetName()}.")
-		int handValue = playerCard1.GetValue() + playerCard2.GetValue();
+		Console.WriteLine($"You drew a {playerCard1.cardName} and a {playerCard2.cardName}.")
+		int handValue = playerCard1.cardValue + playerCard2.cardValue;
 
 		PlayerTurn();
-
 	}
 
 	public void PlayerTurn()
@@ -52,7 +51,7 @@ public class Program
 			}
 			if else (Console.ReadLine() = "S" || Console.ReadLine() = "Stand")
 			{
-				Console.WriteLine($"your final hand value is {handValue}.")
+				Console.WriteLine($"Your final hand value is {handValue}.")
 				DealerTurn();
 			}
 		}
@@ -61,8 +60,8 @@ public class Program
 	public void PlayerHit()
 	{
 		object newCard = DrawCard();
-		Console.WriteLine($"You drew a {newCard.GetName}!");
-		handValue = handValue + newCard.GetValue();
+		Console.WriteLine($"You drew a {newCard.cardName}!");
+		handValue = handValue + newCard.cardValue;
 		PlayerTurn();
 	}
 }
