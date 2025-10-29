@@ -57,4 +57,12 @@ public class Program
 			}
 		}
 	}
+
+	public void PlayerHit()
+	{
+		object newCard = DrawCard();
+		Console.WriteLine($"You drew a {newCard.GetName}!");
+		handValue = handValue + newCard.GetValue();
+		PlayerTurn();
+	}
 }
