@@ -30,4 +30,31 @@ public class Program
 		PlayerTurn();
 
 	}
+
+	public void PlayerTurn()
+	{
+		if (handValue > 21)
+			{
+				Console.WriteLine($"You busted with {handValue}! The dealer wins!");
+				//Function to move to next game, not sure how we want to move it forward
+			}
+		if else (handValue == 21)
+		{
+			Console.WriteLine($"You got 21! Now its up to the dealer.");
+			DealerTurn();
+		}
+		else 
+		{
+			Console.WriteLine($"Your hand value is {handValue}. Would you like to hit or stand? (H / S)")
+			if (Console.ReadLine() = "H" || Console.ReadLine() = "Hit")
+			{
+				PlayerHit();
+			}
+			if else (Console.ReadLine() = "S" || Console.ReadLine() = "Stand")
+			{
+				Console.WriteLine($"your final hand value is {handValue}.")
+				DealerTurn();
+			}
+		}
+	}
 }
