@@ -1,10 +1,16 @@
-﻿using Cards;
+﻿using System.Security.AccessControl;
+using Cards;
 
 public class Program
 {
     public static void Main(string[] args)
     {
         Console.WriteLine("Hello gamblers!");
+		
+		
+		Ace newCard = new Ace(); //Testing card protection
+		// This will fail due to card protections; newCard.cardValue = 15;
+		Console.WriteLine(newCard.cardValue);
     }
 
 	public object DrawCard()
@@ -15,5 +21,4 @@ public class Program
 		return deckList[cardIndex];
 		deckList.Remove(deckList[cardIndex]);
 	}
-}
 }
