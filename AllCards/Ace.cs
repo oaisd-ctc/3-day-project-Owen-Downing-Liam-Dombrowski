@@ -15,5 +15,10 @@ namespace Cards
         {
             get { return cardName; }
         }*/
+
+        public override void DrawCardFromDeck()
+        {
+            Console.WriteLine($"You drew a {cardName}!");
+        }
     }
 }
