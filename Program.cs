@@ -12,7 +12,17 @@ public class Program
 
 	//Initialize the 3D card array
 
-	public readonly static int[,] baselineDeck = { { 11, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 }, { 6, 0 }, { 7, 0 }, { 8, 0 }, { 9, 0 }, { 10, 0 }, { 10, 1 }, { 10, 2 }, { 10, 3 } };
+	public readonly static int[] baselineDeck = { 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10 };
+	public static int[] inPlayDeck;
+	public static int cardPullProgress; //Keeps track of where in the array it is pulling a card. Because the array is already shuffled, we don't need to use random pulling, but we must keep track of progress because of this.
+	
+	public static void RandomizePlayDeck()
+	{
+		Random rand = new Random();
+		baselineDeck.CopyTo(inPlayDeck, 0);
+		rand.Shuffle(inPlayDeck);
+		cardPullProgress = 0;
+    }
 	public static int handValue;
 
 	public static object DrawCard()
