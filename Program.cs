@@ -1,4 +1,5 @@
-﻿using System.Security.AccessControl;
+﻿using System.Net;
+using System.Security.AccessControl;
 using Cards;
 
 public class Program
@@ -6,36 +7,39 @@ public class Program
 	public static void Main(string[] args)
 	{
 		Console.WriteLine("Hello gamblers!");
+		PlayGame();
 	}
 
 	//Initialize the 3D card array
 
-	public readonly static int[,] baselineDeck = { { 11, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 }, { 6, 0 }, { 7, 0 }, { 8, 0 }, { 9, 0 }, { 10, 1 }, { 10, 2 }, { 10, 3 } };
+	public readonly static int[,] baselineDeck = { { 11, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 }, { 6, 0 }, { 7, 0 }, { 8, 0 }, { 9, 0 }, { 10, 0 }, { 10, 1 }, { 10, 2 }, { 10, 3 } };
+	public static int handValue;
 
-	public object DrawCard()
+	public static object DrawCard()
 	{
 		Random random = new Random();
-		int cardIndex = random.Next(0, deckList.Length);
+		int cardIndex = random.Next(0, 13);
 
-		return deckList[cardIndex];
-		deckList.Remove(deckList[cardIndex]);
+		return baselineDeck[cardIndex,0];
+		//deckList.Remove(deckList[cardIndex]);
 	}
 
-	public void PlayGame()
+	public static void PlayGame()
 	{
 		object dealerCard = DrawCard();
 		object dealerHiddenCard = DrawCard();
-		Console.WriteLine($"The dealer drew a {dealerCard.cardName} and a hidden card.");
+		Console.WriteLine($"The dealer drew a {dealerCard} and a hidden card.");
 
-		object playerCard1 = DrawCard();
-		object playerCard2 = DrawCard();
-		Console.WriteLine($"You drew a {playerCard1.cardName} and a {playerCard2.cardName}.");
-		int handValue = playerCard1.cardValue + playerCard2.cardValue;
+		int playerCard1 = Convert.ToInt32(DrawCard());
+		int playerCard2 = Convert.ToInt32(DrawCard());
+		Console.WriteLine($"You drew a {playerCard1} and a {playerCard2}.");
+		handValue = (playerCard1 + playerCard2);
+		Console.WriteLine($"Your hand value is now {handValue}.");
 
-		PlayerTurn();
+		//PlayerTurn();
 	}
 
-	public void PlayerTurn()
+	/*public void PlayerTurn()
 	{
 		if (handValue > 21)
 			{
@@ -68,5 +72,5 @@ public class Program
 		Console.WriteLine($"You drew a {newCard.cardName}!");
 		handValue = handValue + newCard.cardValue;
 		PlayerTurn();
-	}
+	}*/
 }
