@@ -10,7 +10,7 @@ public class Program
 
 	//Initialize the 3D card array
 
-	public readonly int[,] baselineDeck = { { 11, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 }, { 6, 0 }, { 7, 0 }, { 8, 0 }, { 9, 0 }, { 10, 1 }, { 10, 2 }, { 10, 3 } };
+	public readonly static int[,] baselineDeck = { { 11, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 }, { 6, 0 }, { 7, 0 }, { 8, 0 }, { 9, 0 }, { 10, 1 }, { 10, 2 }, { 10, 3 } };
 
 	public object DrawCard()
 	{
