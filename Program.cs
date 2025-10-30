@@ -6,6 +6,7 @@ public class Program
 {
 	public static void Main(string[] args)
 	{
+		Console.Clear();
 		Console.WriteLine("Hello gamblers!");
 		RandomizePlayDeck();
 		PlayGame();
@@ -48,7 +49,7 @@ public class Program
 		//PlayerTurn();
 	}
 
-	/*public void PlayerTurn()
+	public void PlayerTurn()
 	{
 		if (handValue > 21)
 			{
@@ -63,15 +64,23 @@ public class Program
 		else 
 		{
 			Console.WriteLine($"Your hand value is {handValue}. Would you like to hit or stand? (H / S)");
-			if (Console.ReadLine() = "H" || Console.ReadLine() = "Hit")
+			string userInput = Console.ReadLine();
+			if (userInput == "H" || userInput == "Hit")
 			{
 				PlayerHit();
 			}
-			else if (Console.ReadLine() = "S" || Console.ReadLine() = "Stand")
+			else if (userInput == "S" || userInput == "Stand")
 			{
 				Console.WriteLine($"Your final hand value is {handValue}.");
 				DealerTurn();
 			}
+            else
+            {
+				Console.WriteLine("Oops! You entered an incorrect input. Please try again!");
+				Thread.Sleep(1000);
+				Console.Clear();
+				PlayerTurn();
+            }
 		}
 	}
 
@@ -81,5 +90,5 @@ public class Program
 		Console.WriteLine($"You drew a {newCard.cardName}!");
 		handValue = handValue + newCard.cardValue;
 		PlayerTurn();
-	}*/
+	}
 }
