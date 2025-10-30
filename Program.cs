@@ -3,27 +3,14 @@ using Cards;
 
 public class Program
 {
-    public static void Main(string[] args)
-    {
-        Console.WriteLine("Hello gamblers!");
-    }
+	public static void Main(string[] args)
+	{
+		Console.WriteLine("Hello gamblers!");
+	}
 
-	//Initialize the card objects
-	Ace ace = new Ace();
-	Two two = new Two();
-	Three three = new Three();
-	Four four = new Four();
-	Five five = new Five();
-	Six six = new Six();
-	Seven seven = new Seven();
-	Eight eight = new Eight();
-	Nine nine = new Nine();
-	Ten ten = new Ten();
-	Jack jack = new Jack();
-	Queen queen = new Queen();
-	King king = new King();
-	//Create baseline array
-	public readonly Array baselineDeck = new { ace, two, three, four, five, six, seven, eight, nine, ten, jack, queen, king };
+	//Initialize the 3D card array
+
+	public readonly int[,] baselineDeck = { { 11, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }, { 5, 0 }, { 6, 0 }, { 7, 0 }, { 8, 0 }, { 9, 0 }, { 10, 1 }, { 10, 2 }, { 10, 3 } };
 
 	public object DrawCard()
 	{
