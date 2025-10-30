@@ -86,9 +86,9 @@ public class Program
 
 	public void PlayerHit()
 	{
-		object newCard = DrawCard();
-		Console.WriteLine($"You drew a {newCard.cardName}!");
-		handValue = handValue + newCard.cardValue;
+		int newCard = DrawCard();
+		Console.WriteLine($"You drew a {newCard}!");
+		handValue = handValue + newCard;
 		PlayerTurn();
 	}
 }
