@@ -7,13 +7,14 @@ public class Program
 	public static void Main(string[] args)
 	{
 		Console.WriteLine("Hello gamblers!");
+		RandomizePlayDeck();
 		PlayGame();
 	}
 
 	//Initialize the 3D card array
 
 	public readonly static int[] baselineDeck = { 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10 };
-	public static int[] inPlayDeck;
+	public static int[] inPlayDeck = new int[13];
 	public static int cardPullProgress; //Keeps track of where in the array it is pulling a card. Because the array is already shuffled, we don't need to use random pulling, but we must keep track of progress because of this.
 	
 	public static void RandomizePlayDeck()
@@ -22,26 +23,24 @@ public class Program
 		baselineDeck.CopyTo(inPlayDeck, 0);
 		rand.Shuffle(inPlayDeck);
 		cardPullProgress = 0;
+		handValue = 0;
     }
 	public static int handValue;
 
-	public static object DrawCard()
+	public static int DrawCard()
 	{
-		Random random = new Random();
-		int cardIndex = random.Next(0, 13);
-
-		return baselineDeck[cardIndex,0];
-		//deckList.Remove(deckList[cardIndex]);
+		cardPullProgress++;
+		return inPlayDeck[(cardPullProgress - 1)];
 	}
 
 	public static void PlayGame()
 	{
-		object dealerCard = DrawCard();
-		object dealerHiddenCard = DrawCard();
+		int dealerCard = DrawCard();
+		int dealerHiddenCard = DrawCard();
 		Console.WriteLine($"The dealer drew a {dealerCard} and a hidden card.");
 
-		int playerCard1 = Convert.ToInt32(DrawCard());
-		int playerCard2 = Convert.ToInt32(DrawCard());
+		int playerCard1 = DrawCard();
+		int playerCard2 = DrawCard();
 		Console.WriteLine($"You drew a {playerCard1} and a {playerCard2}.");
 		handValue = (playerCard1 + playerCard2);
 		Console.WriteLine($"Your hand value is now {handValue}.");
