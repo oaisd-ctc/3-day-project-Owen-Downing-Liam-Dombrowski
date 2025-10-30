@@ -49,7 +49,7 @@ public class Program
 		//PlayerTurn();
 	}
 
-	public void PlayerTurn()
+	public static void PlayerTurn()
 	{
 		if (handValue > 21)
 			{
@@ -84,7 +84,7 @@ public class Program
 		}
 	}
 
-	public void PlayerHit()
+	public static void PlayerHit()
 	{
 		int newCard = DrawCard();
 		Console.WriteLine($"You drew a {newCard}!");
