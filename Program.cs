@@ -25,6 +25,8 @@ public class Program
 		rand.Shuffle(inPlayDeck);
 		cardPullProgress = 0;
 		handValue = 0;
+		dealerHandValue = 0;
+		dealerHiddenCard = 0;
     }
 	public static int handValue;
 	public static int dealerHandValue;
