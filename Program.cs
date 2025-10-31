@@ -27,6 +27,7 @@ public class Program
 		handValue = 0;
     }
 	public static int handValue;
+	public static int dealerHandValue;
 
 	public static int DrawCard()
 	{
@@ -38,6 +39,7 @@ public class Program
 	{
 		int dealerCard = DrawCard();
 		int dealerHiddenCard = DrawCard();
+		dealerHandValue = dealerCard + dealerHiddenCard;
 		Console.WriteLine($"The dealer drew a {dealerCard} and a hidden card.");
 
 		int playerCard1 = DrawCard();
@@ -52,19 +54,19 @@ public class Program
 	public static void PlayerTurn()
 	{
 		if (handValue > 21)
-			{
-				Console.WriteLine($"You busted with {handValue}! The dealer wins!");
-				//Function to move to next game, not sure how we want to move it forward
-			}
+		{
+			Console.WriteLine($"You busted with {handValue}! The dealer wins!");
+			//Function to move to next game, not sure how we want to move it forward
+		}
 		else if (handValue == 21)
 		{
 			Console.WriteLine($"You got 21! Now its up to the dealer.");
 			DealerTurn();
 		}
-		else 
+		else
 		{
 			Console.WriteLine($"Your hand value is {handValue}. Would you like to hit or stand? (H / S)");
-			string userInput = Console.ReadLine();
+			string userInput = Console.ReadLine()!;
 			if (userInput == "H" || userInput == "Hit")
 			{
 				PlayerHit();
@@ -74,15 +76,39 @@ public class Program
 				Console.WriteLine($"Your final hand value is {handValue}.");
 				DealerTurn();
 			}
-            else
-            {
+			else
+			{
 				Console.WriteLine("Oops! You entered an incorrect input. Please try again!");
-				Thread.Sleep(1000);
+				Thread.Sleep(500);
 				Console.Clear();
 				PlayerTurn();
-            }
+			}
 		}
 	}
+	
+	public static void DealerTurn()
+    {
+		int dealerCard = DrawCard();
+		dealerHandValue = dealerHandValue + dealerCard;
+		if (dealerHandValue < 17)
+		{
+			Console.WriteLine($"Dealer has pulled a {dealerCard}. The dealer is now at {dealerHandValue}.");
+			Thread.Sleep(500);
+			DealerTurn();
+		}
+		else if ((dealerHandValue >= 17) && (dealerHandValue < 21))
+		{
+			Console.WriteLine($"Dealer has pulled a {dealerCard}. The dealer is now standing at {dealerHandValue}.");
+		}
+		else if (dealerHandValue == 21)
+		{
+			Console.WriteLine($"Dealer has pulled a {dealerCard}, and that's a Blackjack!");
+		}
+        else
+        {
+			Console.WriteLine($"Dealer has pulled a {dealerCard} and busts with a hand of {dealerHandValue}. You win!");
+        }
+    }
 
 	public static void PlayerHit()
 	{
