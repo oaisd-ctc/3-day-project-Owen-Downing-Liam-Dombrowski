@@ -48,7 +48,7 @@ public class Program
 		handValue = (playerCard1 + playerCard2);
 		Console.WriteLine($"Your hand value is now {handValue}.");
 
-		//PlayerTurn();
+		PlayerTurn();
 	}
 
 	public static void PlayerTurn()
