@@ -58,8 +58,10 @@ public class Program
 	{
 		if (handValue > 21)
 		{
-			Console.WriteLine($"You busted with {handValue}! The dealer wins!");
+			Console.WriteLine($"You busted with {handValue}! The dealer wins!\nA new game will start in 5 seconds.");
 			//Function to move to next game, not sure how we want to move it forward
+			Thread.Sleep(5000);
+			PlayGame();
 		}
 		else if (handValue == 21)
 		{
