@@ -28,6 +28,7 @@ public class Program
     }
 	public static int handValue;
 	public static int dealerHandValue;
+	public static int dealerHiddenCard;
 
 	public static int DrawCard()
 	{
@@ -38,7 +39,7 @@ public class Program
 	public static void PlayGame()
 	{
 		int dealerCard = DrawCard();
-		int dealerHiddenCard = DrawCard();
+		dealerHiddenCard = DrawCard();
 		dealerHandValue = dealerCard + dealerHiddenCard;
 		Console.WriteLine($"The dealer drew a {dealerCard} and a hidden card.");
 
@@ -74,6 +75,7 @@ public class Program
 			else if (userInput == "S" || userInput == "Stand")
 			{
 				Console.WriteLine($"Your final hand value is {handValue}.");
+				Console.WriteLine($"Dealer reveals the hidden card, which is a {dealerHiddenCard}. The dealer now has {dealerHandValue}.");
 				DealerTurn();
 			}
 			else
