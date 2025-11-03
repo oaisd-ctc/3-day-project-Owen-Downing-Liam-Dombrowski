@@ -80,7 +80,7 @@ public class Program
 			{
 				Console.WriteLine($"Your final hand value is {handValue}.");
 				Console.WriteLine($"Dealer reveals the hidden card, which is a {dealerHiddenCard}. The dealer now has {dealerHandValue}.");
-				int dealerWinCheck = CheckForDealerWin();
+				/*int dealerWinCheck = CheckForDealerWin();
 				if (dealerWinCheck == 2)
 				{
 					Console.WriteLine("The dealers hand is higher than yours. The dealer wins!\nA new game will start in 5 seconds.");
@@ -100,7 +100,7 @@ public class Program
 					Console.WriteLine("The dealer has the same hand as you, the round is a stalemate. You bet has been returned to you.\nA new game will start in 5 seconds.");
 					Thread.Sleep(5000);
 					PlayGame();
-                }
+                }*/
 				DealerTurn();
 			}
 			else
