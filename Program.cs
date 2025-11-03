@@ -66,6 +66,7 @@ public class Program
 		else if (handValue == 21)
 		{
 			Console.WriteLine($"You got 21! Now its up to the dealer.");
+			Console.WriteLine($"Dealer reveals the hidden card, which is a {dealerHiddenCard}. The dealer now has {dealerHandValue}.");
 			DealerTurn();
 		}
 		else
