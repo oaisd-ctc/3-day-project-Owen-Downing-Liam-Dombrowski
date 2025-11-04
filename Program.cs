@@ -44,7 +44,7 @@ public class Program
 		int dealerCard = DrawCard();
 		dealerHiddenCard = DrawCard();
 		dealerHandValue = dealerCard + dealerHiddenCard;
-		Console.WriteLine($"The dealer drew a {dealerCard} and a hidden card.");
+		WriteText($"The dealer drew a {dealerCard} and a hidden card.", 50);
 
 		int playerCard1 = DrawCard();
 		int playerCard2 = DrawCard();
@@ -174,7 +174,7 @@ public class Program
 		Thread.Sleep(5000);
 		PlayGame();
 	}
-	
+
 	public static void ViewRules()
 	{
 		Console.WriteLine("Would you like to read the rules prior to starting this session? (Y / N)");
@@ -201,14 +201,41 @@ public class Program
 		{
 			Console.Clear();
 		}
-        else
-        {
+		else
+		{
 			Console.WriteLine("You have entered an incorrect input. Please enter a correct input value.");
 			Thread.Sleep(500);
 			Console.Clear();
 			ViewRules();
+		}
+	}
+
+	/*private static void WriteText(string toWrite, float duration)
+	{
+		string[] splitString = toWrite.Split();
+		float delay = duration / splitString.Length;
+		foreach (string word in splitString)
+		{
+			foreach (string c in word.Split())
+			{
+				Console.Write(c);
+				//Thread.Sleep((int)delay * 100);
+				Thread.Sleep(100);
+			}
+			Console.Write(" ");
+		}
+	}*/
+	
+	private static void WriteText(string toWrite, float duration)
+	{
+		char[] splitString = toWrite.ToCharArray();
+		float delay = duration / splitString.Length; 
+		foreach(char c in splitString)
+        {
+			Console.Write(c);
+			Thread.Sleep(20);
         }
-    }
+	}
 	//This dealer win method is deprecated and is not going to be used. Left here for now in case we need to come back to the logic of it.
 	/*public static int CheckForDealerWin()
     {
