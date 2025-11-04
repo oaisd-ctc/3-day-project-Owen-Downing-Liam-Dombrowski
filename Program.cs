@@ -44,13 +44,13 @@ public class Program
 		int dealerCard = DrawCard();
 		dealerHiddenCard = DrawCard();
 		dealerHandValue = dealerCard + dealerHiddenCard;
-		WriteText($"The dealer drew a {dealerCard} and a hidden card.", 50);
+		WriteText($"The dealer drew a {dealerCard} and a hidden card.\n", 50);
 
 		int playerCard1 = DrawCard();
 		int playerCard2 = DrawCard();
-		Console.WriteLine($"You drew a {playerCard1} and a {playerCard2}.");
+		WriteText($"You drew a {playerCard1} and a {playerCard2}.\n", 50);
 		handValue = (playerCard1 + playerCard2);
-		Console.WriteLine($"Your hand value is now {handValue}.");
+		WriteText($"Your hand value is now {handValue}.\n", 50);
 
 		PlayerTurn();
 	}
@@ -59,20 +59,20 @@ public class Program
 	{
 		if (handValue > 21)
 		{
-			Console.WriteLine($"You busted with {handValue}! The dealer wins!\nA new game will start in 5 seconds.");
+			WriteText($"You busted with {handValue}! The dealer wins!\nA new game will start in 5 seconds.", 50);
 			//Function to move to next game, not sure how we want to move it forward
 			Thread.Sleep(5000);
 			PlayGame();
 		}
 		else if (handValue == 21)
 		{
-			Console.WriteLine($"You got 21! Now its up to the dealer.");
-			Console.WriteLine($"Dealer reveals the hidden card, which is a {dealerHiddenCard}. The dealer now has {dealerHandValue}.");
+			WriteText($"You got 21! Now its up to the dealer.\n", 50);
+			WriteText($"Dealer reveals the hidden card, which is a {dealerHiddenCard}. The dealer now has {dealerHandValue}.\n", 50);
 			DealerTurn();
 		}
 		else
 		{
-			Console.WriteLine($"Your hand value is {handValue}. Would you like to hit or stand? (H / S)");
+			WriteText($"Your hand value is {handValue}. Would you like to hit or stand? (H / S)\n", 50);
 			string userInput = Console.ReadLine()!;
 			if (userInput == "H" || userInput == "Hit")
 			{
