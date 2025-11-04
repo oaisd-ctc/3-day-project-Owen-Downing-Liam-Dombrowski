@@ -138,7 +138,8 @@ public class Program
 		}
 		else
 		{
-			Console.WriteLine($"Dealer has pulled a {dealerCard} and busts with a hand of {dealerHandValue}. You win!");
+			Console.WriteLine($"The dealer busts with a hand of {dealerHandValue}. You win!");
+			//Player gets credited here.
 		}
 	}
 
