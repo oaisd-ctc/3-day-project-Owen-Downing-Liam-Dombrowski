@@ -17,7 +17,7 @@ public class Program
 	public readonly static int[] baselineDeck = { 11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10 };
 	public static int[] inPlayDeck = new int[13];
 	public static int cardPullProgress; //Keeps track of where in the array it is pulling a card. Because the array is already shuffled, we don't need to use random pulling, but we must keep track of progress because of this.
-	
+
 	public static void RandomizePlayDeck()
 	{
 		Random rand = new Random();
@@ -27,7 +27,7 @@ public class Program
 		handValue = 0;
 		dealerHandValue = 0;
 		dealerHiddenCard = 0;
-    }
+	}
 	public static int handValue;
 	public static int dealerHandValue;
 	public static int dealerHiddenCard;
@@ -113,30 +113,33 @@ public class Program
 			}
 		}
 	}
-	
+
 	public static void DealerTurn()
-    {
+	{
 		int dealerCard = DrawCard();
-		dealerHandValue = dealerHandValue + dealerCard;
+		//dealerHandValue = dealerHandValue + dealerCard;
 		if (dealerHandValue < 17)
 		{
+			dealerHandValue = dealerHandValue + dealerCard;
 			Console.WriteLine($"Dealer has pulled a {dealerCard}. The dealer is now at {dealerHandValue}.");
 			Thread.Sleep(500);
 			DealerTurn();
 		}
 		else if ((dealerHandValue >= 17) && (dealerHandValue < 21))
 		{
-			Console.WriteLine($"Dealer has pulled a {dealerCard}. The dealer is now standing at {dealerHandValue}.");
+			Console.WriteLine($"The dealer is now standing at {dealerHandValue}.");
+			CheckForDealerWin();
 		}
 		else if (dealerHandValue == 21)
 		{
-			Console.WriteLine($"Dealer has pulled a {dealerCard}, and that's a Blackjack!");
+			Console.WriteLine($"The dealer has reached 21! That's a Blackjack for the dealer!");
+			CheckForDealerWin();
 		}
-        else
-        {
+		else
+		{
 			Console.WriteLine($"Dealer has pulled a {dealerCard} and busts with a hand of {dealerHandValue}. You win!");
-        }
-    }
+		}
+	}
 
 	public static void PlayerHit()
 	{
@@ -146,7 +149,31 @@ public class Program
 		PlayerTurn();
 	}
 
-	public static int CheckForDealerWin()
+	public static void CheckForDealerWin()
+    {
+		if (handValue > dealerHandValue)
+		{
+			Console.WriteLine($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. You win!");
+			//Console.WriteLine($"You have been credited {roundEndingCredits}");
+			//Need to implement credit system!
+		}
+		else if (handValue < dealerHandValue)
+		{
+			Console.WriteLine($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. Dealer wins!");
+			//Console.WriteLine("You have lost 100% of your original bet.");
+		}
+		else
+		{
+			Console.WriteLine($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. The round is a stalemate.");
+			//Console.WriteLine("You have been credited 100% of your original bet.");
+		}
+		RandomizePlayDeck();
+		Console.WriteLine("A new game will start in 5 seconds.");
+		Thread.Sleep(5000);
+		PlayGame();
+    }
+	//This dealer win method is deprecated and is not going to be used. Left here for now in case we need to come back to the logic of it.
+	/*public static int CheckForDealerWin()
     {
 		if (handValue < dealerHandValue)
 		{
@@ -160,5 +187,5 @@ public class Program
         {
 			return 1;
         }
-    }
+    }*/
 }
