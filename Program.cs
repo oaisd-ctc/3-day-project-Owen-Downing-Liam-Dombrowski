@@ -210,6 +210,8 @@ public class Program
 		}
 	}
 
+	
+	//Old function when first testing. Ignore for now. Delete when finalizing project.
 	/*private static void WriteText(string toWrite, float duration)
 	{
 		string[] splitString = toWrite.Split();
