@@ -8,6 +8,7 @@ public class Program
 	{
 		Console.Clear();
 		Console.WriteLine("Hello gamblers!");
+		ViewRules();
 		RandomizePlayDeck();
 		PlayGame();
 	}
@@ -150,7 +151,7 @@ public class Program
 	}
 
 	public static void CheckForDealerWin()
-    {
+	{
 		if (handValue > dealerHandValue)
 		{
 			Console.WriteLine($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. You win!");
@@ -171,6 +172,41 @@ public class Program
 		Console.WriteLine("A new game will start in 5 seconds.");
 		Thread.Sleep(5000);
 		PlayGame();
+	}
+	
+	public static void ViewRules()
+	{
+		Console.WriteLine("Would you like to read the rules prior to starting this session? (Y / N)");
+		string userRulesIntent = Console.ReadLine()!;
+		userRulesIntent = userRulesIntent.ToLower();
+		if (userRulesIntent == "y")
+		{
+			Console.Clear();
+			Console.WriteLine("There is one shoe, which contains one deck of cards EXCLUDING suits (13 cards total).");
+			Console.WriteLine("The shoe is randomized every round.");
+			Console.WriteLine("\nDealer Rules\n\nDealer will take two cards at the start of a round, showing one to the player and keeping the other hidden until the player has finished making their moves.");
+			Console.WriteLine("Dealer MUST hit on 16 or lower.");
+			Console.WriteLine("Dealer will stand on soft 17 (Ace + 6).");
+			Console.WriteLine("\nPlayer Rules\n\nPlayers will be dealt two cards at the start of the round.");
+			Console.WriteLine("Players will have the option to hit or stand. They can continue to hit as many times as they want until busting. Or, they can choose to stand.\n*Players are not required to hit.*");
+			Console.WriteLine("Players will have the option to double down, placing a new bet equal to 100% of their original bet. After doubling down, they will NOT be able to hit anymore, and the dealer will pull cards until they reach a card to stand on or they bust.");
+			Console.WriteLine("Players will have the option to split their hand. Splitting the hand will move gameplay to a new function, splitting their cards to two different decks. They will receive a new deck, automatically betting 100% of their original bet.");
+			Console.WriteLine("Payout\n\nBlackjack pays 3:2\nInsurance pays 2:1");
+			Console.WriteLine("\nPress enter when you're ready to continue to the game.");
+			Console.Read();
+			Console.Clear();
+		}
+		else if (userRulesIntent == "n")
+		{
+			Console.Clear();
+		}
+        else
+        {
+			Console.WriteLine("You have entered an incorrect input. Please enter a correct input value.");
+			Thread.Sleep(500);
+			Console.Clear();
+			ViewRules();
+        }
     }
 	//This dealer win method is deprecated and is not going to be used. Left here for now in case we need to come back to the logic of it.
 	/*public static int CheckForDealerWin()
