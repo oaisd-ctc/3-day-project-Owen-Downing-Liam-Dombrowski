@@ -237,6 +237,10 @@ public class Program
 			Thread.Sleep(1000);
 			PlaceBet();
 		}
+		currentMoney = currentMoney - playerBet;
+		WriteText($"You have bet ${playerBet}.\n", 50);
+		Thread.Sleep(1000);
+		Console.Clear();
 	}
 
 	
