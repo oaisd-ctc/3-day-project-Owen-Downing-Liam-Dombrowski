@@ -145,7 +145,7 @@ public class Program
 			WriteText($"The dealer busts with a hand of {dealerHandValue}. You win!\n", 50);
 
 			//Player gets credited here.
-			roundPayout = playerBet * 1.5F;
+			roundPayout = playerBet * 2.0F;
 			currentMoney = currentMoney + roundPayout;
 			WriteText($"You won ${roundPayout}! You now have ${currentMoney}.\n", 50);
 
@@ -165,18 +165,22 @@ public class Program
 		if (handValue > dealerHandValue)
 		{
 			WriteText($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. You win!\n", 50);
-			//Console.WriteLine($"You have been credited {roundEndingCredits}");
-			//Need to implement credit system!
+			roundPayout = playerBet * 2.0F;
+			currentMoney = currentMoney + roundPayout;
+			WriteText($"You won ${roundPayout}! You now have ${currentMoney}.\n", 50);
+			
 		}
 		else if (handValue < dealerHandValue)
 		{
 			WriteText($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. Dealer wins!\n", 50);
-			//Console.WriteLine("You have lost 100% of your original bet.");
+			WriteText($"You lost your bet of {playerBet}, you now have {currentMoney}.\n");
 		}
 		else
 		{
 			WriteText($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. The round is a stalemate.\n", 50);
-			//Console.WriteLine("You have been credited 100% of your original bet.");
+			currentMoney = currentMoney + playerBet;
+			WriteText($"You've been refunded your bet of {playerBet}.\n");
+
 		}
 		RandomizePlayDeck();
 		WriteText("A new game will start in 5 seconds.\n", 50);
