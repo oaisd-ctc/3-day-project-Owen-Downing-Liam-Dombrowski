@@ -221,9 +221,22 @@ public class Program
 
 	public static void PlaceBet()
 	{
-		WriteText($"You have ${currentMoney} right now, how much would you like to bet?", 50);
-		playerBet = Console.ReadLine();
-
+		WriteText($"You have ${currentMoney} right now, how much would you like to bet?\n", 50);
+		try
+		{
+			playerBet = (float)Convert.ToDouble(Console.ReadLine()); //Casting double --> float, may be some precision loss if the player has small bets.
+		}
+		catch
+		{
+			WriteText("You entered an incorrect input! Please try again.\n", 50);
+			PlaceBet();
+		}
+		if (playerBet > currentMoney)
+		{
+			WriteText($"You tried betting ${playerBet}, but you only have ${currentMoney} in your account. Adjust your bet to an amount less than or equal to how much money you have.\n", 50);
+			Thread.Sleep(1000);
+			PlaceBet();
+		}
 	}
 
 	
