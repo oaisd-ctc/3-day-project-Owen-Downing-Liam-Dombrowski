@@ -44,6 +44,7 @@ public class Program
 
 	public static void PlayGame()
 	{
+		PlaceBet(); //Asks player to place their bet.
 		int dealerCard = DrawCard();
 		dealerHiddenCard = DrawCard();
 		dealerHandValue = dealerCard + dealerHiddenCard;
@@ -75,11 +76,6 @@ public class Program
 		}
 		else
 		{
-			//asks for the players initial bet
-			PlaceBet();
-			
-			
-
 			WriteText($"Your hand value is {handValue}. Would you like to hit or stand? (H / S)\n", 50);
 			string userInput = Console.ReadLine()!;
 			if (userInput == "H" || userInput == "Hit")
@@ -226,7 +222,7 @@ public class Program
 	public static void PlaceBet()
 	{
 		WriteText($"You have ${currentMoney} right now, how much would you like to bet?", 50);
-		PlayerBet = Console.ReadLine()
+		playerBet = Console.ReadLine();
 
 	}
 
