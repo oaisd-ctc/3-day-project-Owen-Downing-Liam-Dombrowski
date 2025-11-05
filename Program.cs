@@ -44,6 +44,7 @@ public class Program
 
 	public static void PlayGame()
 	{
+		PlaceBet(); //Asks player to place their bet.
 		int dealerCard = DrawCard();
 		dealerHiddenCard = DrawCard();
 		dealerHandValue = dealerCard + dealerHiddenCard;
