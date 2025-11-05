@@ -130,28 +130,28 @@ public class Program
 		if (dealerHandValue < 17)
 		{
 			dealerHandValue = dealerHandValue + dealerCard;
-			Console.WriteLine($"Dealer has pulled a {dealerCard}. The dealer is now at {dealerHandValue}.");
+			WriteText($"Dealer has pulled a {dealerCard}. The dealer is now at {dealerHandValue}.\n", 50);
 			Thread.Sleep(500);
 			DealerTurn();
 		}
 		else if ((dealerHandValue >= 17) && (dealerHandValue < 21))
 		{
-			Console.WriteLine($"The dealer is now standing at {dealerHandValue}.");
+			WriteText($"The dealer is now standing at {dealerHandValue}.\n", 50);
 			CheckForDealerWin();
 		}
 		else if (dealerHandValue == 21)
 		{
-			Console.WriteLine($"The dealer has reached 21! That's a Blackjack for the dealer!");
+			WriteText($"The dealer has reached 21! That's a Blackjack for the dealer!\n", 50);
 			CheckForDealerWin();
 		}
 		else
 		{
-			Console.WriteLine($"The dealer busts with a hand of {dealerHandValue}. You win!");
+			WriteText($"The dealer busts with a hand of {dealerHandValue}. You win!\n", 50);
 
 			//Player gets credited here.
 			roundPayout = playerBet * 1.5F;
 			currentMoney = currentMoney + roundPayout;
-			WriteText($"You won ${roundPayout}! You now have ${currentMoney}.", 50);
+			WriteText($"You won ${roundPayout}! You now have ${currentMoney}.\n", 50);
 
 		}
 	}
@@ -159,7 +159,7 @@ public class Program
 	public static void PlayerHit()
 	{
 		int newCard = DrawCard();
-		Console.WriteLine($"You drew a {newCard}!");
+		WriteText($"You drew a {newCard}!\n", 50);
 		handValue = handValue + newCard;
 		PlayerTurn();
 	}
