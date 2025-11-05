@@ -56,9 +56,6 @@ public class Program
 		handValue = (playerCard1 + playerCard2);
 		WriteText($"Your hand value is now {handValue}.\n", 50);
 
-		//asks for the players initial bet
-		PlaceBet();
-
 		PlayerTurn();
 	}
 
