@@ -80,8 +80,8 @@ public class Program
 			}
 			else if (userInput == "S" || userInput == "Stand")
 			{
-				Console.WriteLine($"Your final hand value is {handValue}.");
-				Console.WriteLine($"Dealer reveals the hidden card, which is a {dealerHiddenCard}. The dealer now has {dealerHandValue}.");
+				WriteText($"Your final hand value is {handValue}.\n", 50);
+				WriteText($"Dealer reveals the hidden card, which is a {dealerHiddenCard}. The dealer now has {dealerHandValue}.\n", 50);
 				/*int dealerWinCheck = CheckForDealerWin();
 				if (dealerWinCheck == 2)
 				{
@@ -107,7 +107,7 @@ public class Program
 			}
 			else
 			{
-				Console.WriteLine("Oops! You entered an incorrect input. Please try again!");
+				WriteText("Oops! You entered an incorrect input. Please try again!\n", 50);
 				Thread.Sleep(500);
 				Console.Clear();
 				PlayerTurn();
