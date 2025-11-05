@@ -55,6 +55,9 @@ public class Program
 		handValue = (playerCard1 + playerCard2);
 		WriteText($"Your hand value is now {handValue}.\n", 50);
 
+		//asks for the players initial bet
+		PlaceBet();
+
 		PlayerTurn();
 	}
 
@@ -75,11 +78,6 @@ public class Program
 		}
 		else
 		{
-			//asks for the players initial bet
-			PlaceBet();
-			
-			
-
 			WriteText($"Your hand value is {handValue}. Would you like to hit or stand? (H / S)\n", 50);
 			string userInput = Console.ReadLine()!;
 			if (userInput == "H" || userInput == "Hit")
@@ -226,7 +224,29 @@ public class Program
 	public static void PlaceBet()
 	{
 		WriteText($"You have ${currentMoney} right now, how much would you like to bet?", 50);
-		PlayerBet = Console.ReadLine()
+		playerBet = Console.ReadLine();
+
+		int playerBetInt;
+
+		if (int.TryParse(playerBet, out playerBetInt))
+		{
+			if (playerBetInt > currentMoney)
+			{
+				WriteText($"You don't have enough money for that bet!", 50);
+				PlaceBet();
+			}
+			else
+			{
+				currentMoney = currentMoney - playerBet;
+				WriteText($"You have bet ${playerBet}.", 50);
+			}
+		}
+		else
+		{
+			WriteText($"That's not a valid number, try again.");
+			PlaceBet();
+		}
+		
 
 	}
 
