@@ -164,29 +164,29 @@ public class Program
 	{
 		if (handValue > dealerHandValue)
 		{
-			Console.WriteLine($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. You win!");
+			WriteText($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. You win!\n", 50);
 			//Console.WriteLine($"You have been credited {roundEndingCredits}");
 			//Need to implement credit system!
 		}
 		else if (handValue < dealerHandValue)
 		{
-			Console.WriteLine($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. Dealer wins!");
+			WriteText($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. Dealer wins!\n", 50);
 			//Console.WriteLine("You have lost 100% of your original bet.");
 		}
 		else
 		{
-			Console.WriteLine($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. The round is a stalemate.");
+			WriteText($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. The round is a stalemate.\n", 50);
 			//Console.WriteLine("You have been credited 100% of your original bet.");
 		}
 		RandomizePlayDeck();
-		Console.WriteLine("A new game will start in 5 seconds.");
+		WriteText("A new game will start in 5 seconds.\n", 50);
 		Thread.Sleep(5000);
 		PlayGame();
 	}
 
 	public static void ViewRules()
 	{
-		Console.WriteLine("Would you like to read the rules prior to starting this session? (Y / N)");
+		WriteText("Would you like to read the rules prior to starting this session? (Y / N)\n", 50);
 		string userRulesIntent = Console.ReadLine()!;
 		userRulesIntent = userRulesIntent.ToLower();
 		if (userRulesIntent == "y")
