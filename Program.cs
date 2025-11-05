@@ -32,6 +32,9 @@ public class Program
 	public static int handValue;
 	public static int dealerHandValue;
 	public static int dealerHiddenCard;
+	public static int currentMoney = 100;
+	public static int playerBet;
+	public static int roundPayout;
 
 	public static int DrawCard()
 	{
@@ -72,6 +75,11 @@ public class Program
 		}
 		else
 		{
+			//asks for the players initial bet
+			WriteText($"You have ${currentMoney} right now, how much would you like to bet?")
+			playerBet = Console.ReadLine();
+			currentMoney = currentMoney - playerBet;
+
 			WriteText($"Your hand value is {handValue}. Would you like to hit or stand? (H / S)\n", 50);
 			string userInput = Console.ReadLine()!;
 			if (userInput == "H" || userInput == "Hit")
@@ -139,7 +147,12 @@ public class Program
 		else
 		{
 			Console.WriteLine($"The dealer busts with a hand of {dealerHandValue}. You win!");
+
 			//Player gets credited here.
+			roundPayout = playerBet * 1.5;
+			currentMoney = currentMoney + roundPayout;
+			WriteText($"You won ${roundPayout}! You now have ${currentMoney}.")
+
 		}
 	}
 
