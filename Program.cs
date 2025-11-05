@@ -32,9 +32,9 @@ public class Program
 	public static int handValue;
 	public static int dealerHandValue;
 	public static int dealerHiddenCard;
-	public static int currentMoney = 100;
-	public static int playerBet;
-	public static int roundPayout;
+	public static float currentMoney = 100;
+	public static float playerBet;
+	public static float roundPayout;
 
 	public static int DrawCard()
 	{
@@ -76,8 +76,8 @@ public class Program
 		else
 		{
 			//asks for the players initial bet
-			WriteText($"You have ${currentMoney} right now, how much would you like to bet?")
-			playerBet = Console.ReadLine();
+			WriteText($"You have ${currentMoney} right now, how much would you like to bet?", 50);
+			playerBet = Console.ReadLine(); // Make this a method instead. Needs try-catch and needs checks for if the player has that money.
 			currentMoney = currentMoney - playerBet;
 
 			WriteText($"Your hand value is {handValue}. Would you like to hit or stand? (H / S)\n", 50);
@@ -149,9 +149,9 @@ public class Program
 			Console.WriteLine($"The dealer busts with a hand of {dealerHandValue}. You win!");
 
 			//Player gets credited here.
-			roundPayout = playerBet * 1.5;
+			roundPayout = playerBet * 1.5F;
 			currentMoney = currentMoney + roundPayout;
-			WriteText($"You won ${roundPayout}! You now have ${currentMoney}.")
+			WriteText($"You won ${roundPayout}! You now have ${currentMoney}.", 50);
 
 		}
 	}
