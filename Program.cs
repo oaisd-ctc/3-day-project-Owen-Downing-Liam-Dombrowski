@@ -76,9 +76,9 @@ public class Program
 		else
 		{
 			//asks for the players initial bet
-			WriteText($"You have ${currentMoney} right now, how much would you like to bet?", 50);
-			playerBet = Console.ReadLine(); // Make this a method instead. Needs try-catch and needs checks for if the player has that money.
-			currentMoney = currentMoney - playerBet;
+			PlaceBet();
+			
+			
 
 			WriteText($"Your hand value is {handValue}. Would you like to hit or stand? (H / S)\n", 50);
 			string userInput = Console.ReadLine()!;
@@ -221,6 +221,13 @@ public class Program
 			Console.Clear();
 			ViewRules();
 		}
+	}
+
+	public static void PlaceBet()
+	{
+		WriteText($"You have ${currentMoney} right now, how much would you like to bet?", 50);
+		PlayerBet = Console.ReadLine()
+
 	}
 
 	
