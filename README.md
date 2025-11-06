@@ -1,1 +1,9 @@
-[![Open in Codespaces](https://classroom.github.com/assets/launch-codespace-2972f46106e565e64193e422d61a12cf1da4916b45550586e14ef0a7c637dd04.svg)](https://classroom.github.com/open-in-codespaces?assignment_repo_id=21316284)
+# __Blackjack Console Game__
+
+This program allows for users to play a simulated game of blackjack, including betting with fake money. 
+Having an eays, carefree way allows users to play a fun game without worrying about any real stakes. 
+
+## User Inputs
+
+Players are not required to input any more than a "yes" or "no" and "hit" or "stand" to move the game forward within their control.
+
