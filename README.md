@@ -13,5 +13,5 @@ Rules are available for viewing within the program. This is recommended to avoid
 
 ## Contributors
 
-The program was developed by Liam Dombroski and Owen Downing as a part of the Software and Game Development program at Careerline Tech Center.
+The program was developed by Liam Dombrowski and Owen Downing as a part of the Software and Game Development program at Careerline Tech Center.
 
