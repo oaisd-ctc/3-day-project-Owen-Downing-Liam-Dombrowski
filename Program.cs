@@ -165,6 +165,7 @@ public class Program
 		if (handValue > dealerHandValue)
 		{
 			WriteText($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. You win!\n", 50);
+			//credits player for win
 			roundPayout = playerBet * 2.0F;
 			currentMoney = currentMoney + roundPayout;
 			WriteText($"You won ${roundPayout}! You now have ${currentMoney}.\n", 50);
@@ -178,6 +179,7 @@ public class Program
 		else
 		{
 			WriteText($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. The round is a stalemate.\n", 50);
+			//refunds player bet
 			currentMoney = currentMoney + playerBet;
 			WriteText($"You've been refunded your bet of {playerBet}.\n");
 
