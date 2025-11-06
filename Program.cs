@@ -209,7 +209,7 @@ public class Program
 			Console.WriteLine("Players will have the option to split their hand. Splitting the hand will move gameplay to a new function, splitting their cards to two different decks. They will receive a new deck, automatically betting 100% of their original bet.");
 			Console.WriteLine("Payout\n\nBlackjack pays 3:2\nInsurance pays 2:1");
 			Console.WriteLine("\nPress enter when you're ready to continue to the game.");
-			Console.Read();
+			Console.ReadKey();
 			Console.Clear();
 		}
 		else if (userRulesIntent == "n")
