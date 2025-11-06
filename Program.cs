@@ -174,14 +174,14 @@ public class Program
 		else if (handValue < dealerHandValue)
 		{
 			WriteText($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. Dealer wins!\n", 50);
-			WriteText($"You lost your bet of {playerBet}, you now have {currentMoney}.\n");
+			WriteText($"You lost your bet of {playerBet}, you now have {currentMoney}.\n", 50);
 		}
 		else
 		{
 			WriteText($"The dealer has a final hand value of {dealerHandValue}, while you have a final hand value of {handValue}. The round is a stalemate.\n", 50);
 			//refunds player bet
 			currentMoney = currentMoney + playerBet;
-			WriteText($"You've been refunded your bet of {playerBet}.\n");
+			WriteText($"You've been refunded your bet of {playerBet}.\n", 50);
 
 		}
 		RandomizePlayDeck();
