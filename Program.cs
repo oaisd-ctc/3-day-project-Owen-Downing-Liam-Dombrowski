@@ -35,6 +35,7 @@ public class Program
 	public static float currentMoney = 100;
 	public static float playerBet;
 	public static float roundPayout;
+	protected static bool betPlaced;
 
 	public static int DrawCard()
 	{
@@ -44,6 +45,7 @@ public class Program
 
 	public static void PlayGame()
 	{
+		betPlaced = false;
 		PlaceBet(); //Asks player to place their bet.
 		int dealerCard = DrawCard();
 		dealerHiddenCard = DrawCard();
@@ -143,11 +145,12 @@ public class Program
 		else
 		{
 			WriteText($"The dealer busts with a hand of {dealerHandValue}. You win!\n", 50);
+			CheckForDealerWin();
 
 			//Player gets credited here.
-			roundPayout = playerBet * 2.0F;
+			/*roundPayout = playerBet * 2.0F;
 			currentMoney = currentMoney + roundPayout;
-			WriteText($"You won ${roundPayout}! You now have ${currentMoney}.\n", 50);
+			WriteText($"You won ${roundPayout}! You now have ${currentMoney}.\n", 50);*/
 
 		}
 	}
@@ -243,10 +246,20 @@ public class Program
 			Thread.Sleep(1000);
 			PlaceBet();
 		}
-		currentMoney = currentMoney - playerBet;
-		WriteText($"You have bet ${playerBet}.\n", 50);
-		Thread.Sleep(1000);
-		Console.Clear();
+		else if (playerBet < 0.01F)
+		{
+			WriteText("You cannot bet money that doesn't exist! Adjust your bet amount to be above or equal to $0.01.\n", 50);
+			Thread.Sleep(1000);
+			PlaceBet();
+		}
+		if ((playerBet >= 0.01F) && !(playerBet > currentMoney) && (betPlaced == false))
+		{
+			currentMoney = currentMoney - playerBet;
+			betPlaced = true;
+			WriteText($"You have bet ${playerBet}.\n", 50);
+			Thread.Sleep(1000);
+			Console.Clear();
+		}
 	}
 
 	
@@ -274,7 +287,7 @@ public class Program
 		foreach(char c in splitString)
         {
 			Console.Write(c);
-			Thread.Sleep(20);
+			Thread.Sleep(12);
         }
 	}
 	//This dealer win method is deprecated and is not going to be used. Left here for now in case we need to come back to the logic of it.
