@@ -153,7 +153,7 @@ public class Program
 		else
 		{
 			WriteText($"The dealer busts with a hand of {dealerHandValue}. You win!\n", 50);
-			CheckForDealerWin();
+			PlayerWin();
 
 			//Player gets credited here.
 			/*roundPayout = playerBet * 2.0F;
@@ -200,6 +200,17 @@ public class Program
 		Thread.Sleep(5000);
 		PlayGame();
 	}
+
+	public static void PlayerWin()
+    {
+        roundPayout = playerBet * 2.0F;
+		currentMoney = currentMoney + roundPayout;
+		WriteText($"You won ${roundPayout}! You now have ${currentMoney}.\n", 50);
+		RandomizePlayDeck();
+		WriteText("A new game will start in 5 seconds.\n", 50);
+		Thread.Sleep(5000);
+		PlayGame();
+    }
 
 	public static void ViewRules()
 	{
