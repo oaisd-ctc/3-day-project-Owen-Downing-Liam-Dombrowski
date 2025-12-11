@@ -45,20 +45,28 @@ public class Program
 
 	public static void PlayGame()
 	{
-		betPlaced = false;
-		PlaceBet(); //Asks player to place their bet.
-		int dealerCard = DrawCard();
-		dealerHiddenCard = DrawCard();
-		dealerHandValue = dealerCard + dealerHiddenCard;
-		WriteText($"The dealer drew a {dealerCard} and a hidden card.\n", 50);
+		if (!(currentMoney <= 0.01f)){
+			betPlaced = false;
+			PlaceBet(); //Asks player to place their bet.
+			int dealerCard = DrawCard();
+			dealerHiddenCard = DrawCard();
+			dealerHandValue = dealerCard + dealerHiddenCard;
+			WriteText($"The dealer drew a {dealerCard} and a hidden card.\n", 50);
 
-		int playerCard1 = DrawCard();
-		int playerCard2 = DrawCard();
-		WriteText($"You drew a {playerCard1} and a {playerCard2}.\n", 50);
-		handValue = (playerCard1 + playerCard2);
-		WriteText($"Your hand value is now {handValue}.\n", 50);
+			int playerCard1 = DrawCard();
+			int playerCard2 = DrawCard();
+			WriteText($"You drew a {playerCard1} and a {playerCard2}.\n", 50);
+			handValue = (playerCard1 + playerCard2);
+			WriteText($"Your hand value is now {handValue}.\n", 50);
 
-		PlayerTurn();
+			PlayerTurn();
+		}
+        else
+        {
+            WriteText("You've ran out of money! Your gambling spree is over.\nExiting in 10 seconds...\n", 50);
+			Thread.Sleep(5000);
+			Environment.Exit(0);
+        }
 	}
 
 	public static void PlayerTurn()
